@@ -1,0 +1,13 @@
+.btn {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  transition: 0.2s;
+  border: 0px solid transparent;
+  font-family: 'Inter', 'Segoe UI', sans-serif
+}
+
+.btn:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,29 @@
+.myPicture {
+  width: 90%;
+}
+
+.iconSocialMedia {
+  transition: 0.2s;
+}
+
+.iconSocialMedia:hover {
+  opacity: 0.6;
+}
+
+@media (min-width: 576px) {
+  .myPicture {
+    width: 30rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .myPicture {
+    width: 30rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .myPicture {
+    width: 140%;
+  }
+}

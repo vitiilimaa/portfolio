@@ -1,0 +1,12 @@
+.containerIconsContact {
+  border: 5px solid transparent;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #000;
+}
+
+.iconsContact {
+  width: 18px;
+  font-size: 18px;
+  display: flex;
+}

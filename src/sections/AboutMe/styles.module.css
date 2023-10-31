@@ -1,0 +1,30 @@
+.myPictureAboutMe {
+  width: 90%;
+  height: auto;
+}
+
+.iconTechnologies {
+  font-size: 35px;
+  color: rgba(255,255,0,0.6);
+  transition: 0.1s;
+}
+
+.iconTechnologies:hover {
+  color: rgba(255,255,0,1);
+}
+
+@media (min-width: 576px) {
+  .myPictureAboutMe {
+    width: 30rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .myPictureAboutMe {
+    width: 78%;
+  }
+
+.iconTechnologies {
+  font-size: 45px;
+}
+}
