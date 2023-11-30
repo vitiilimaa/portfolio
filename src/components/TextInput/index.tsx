@@ -1,39 +1,57 @@
 import React from "react";
-import styles from "./styles.module.css";
 
 interface TextInputProps {
-  title: string;
   id: string;
-  containerStyle?: string;
+  title: string;
   type?: string;
+  value: string;
+  containerStyle?: string;
+  onChangeValue: (newValue: string) => void;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
-  type,
-  title,
   id,
+  title,
+  type,
+  value,
   containerStyle,
+  onChangeValue,
 }) => {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const newValue = e.target.value;
+    onChangeValue(newValue);
+  }
+
   return (
-    <div className={containerStyle}>
+    <div className={`${containerStyle} form-floating`}>
       {type?.toUpperCase() === "MEMO" ? (
         <textarea
-          className={styles.memoStyle}
+          className="form-control"
           placeholder={title}
           name={id}
           id={id}
+          value={value}
+          onChange={(e) => handleChange(e)}
           cols={30}
           rows={10}
+          style={{ height: 200, resize: "none" }}
+          autoComplete="off"
         />
       ) : (
         <input
-          className={styles.inputStyle}
+          className="form-control"
           placeholder={title}
           name={id}
           id={id}
-          type="text"
+          type={type ? type : "text"}
+          value={value}
+          onChange={(e) => handleChange(e)}
+          autoComplete="off"
         />
       )}
+      <label htmlFor={id}>{title}</label>
     </div>
   );
 };

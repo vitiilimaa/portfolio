@@ -10,3 +10,10 @@
   font-size: 18px;
   display: flex;
 }
+
+@media (min-width: 1200px) {
+  .iconsContact {
+    font-size: 24px;
+    width: 24px;
+  }
+}

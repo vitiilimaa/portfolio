@@ -35,6 +35,7 @@ span,
 footer {
   margin: 0;
   font-family: "Inter", "Segoe UI", sans-serif;
+  cursor: context-menu;
 }
 
 p {
@@ -51,6 +52,14 @@ p {
 
 .separatorLineSections {
   padding-top: 0.2rem;
+}
+
+.testee {
+  border: 1px solid #979797;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  /* border-bottom-width: 0; */
 }
 
 .pb-2-5 {
@@ -105,13 +114,78 @@ li {
   color: #000;
 }
 
+.border-blr-radius-15px {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+#experience {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(232, 232, 232, 1) 100%
+  );
+}
+
+.vertical-timeline::before {
+  width: 2px;
+  left: 4.2rem;
+}
+
+.vertical-timeline-element:first-child {
+  margin-top: 8rem;
+}
+
+.vertical-timeline-element:last-child {
+  margin-bottom: 8rem;
+}
+
+.vertical-timeline-element-title {
+  font-size: 2rem !important;
+}
+
+.vertical-timeline-element-description,
+.vertical-timeline-element-subtitle {
+  font-size: 1.1rem !important;
+}
+
+.form-control {
+  font-family: "Inter";
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 0;
+}
+
+.form-control:focus {
+  border-color: #92979f;
+  box-shadow: none;
+}
+
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after {
+  background-color: transparent;
+}
+
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-control:focus ~ label {
+  transform: scale(0.8) translateY(-0.5rem) translateX(0.15rem);
+}
+
 @media (min-width: 992px) {
   .ms-lg-6 {
     margin-left: 5rem !important;
   }
+
+  .px-lg-6 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+  }
 }
 
 @media (min-width: 1200px) {
+  .mt-xl-5-5 {
+    margin-top: 4rem !important;
+  }
+
   .mt-xl-6 {
     margin-top: 5rem !important;
   }
@@ -130,6 +204,11 @@ li {
 
   .me-xl-7 {
     margin-right: 7rem !important;
+  }
+
+  .px-xl-6 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
   }
 
   .py-xl-6 {
@@ -168,6 +247,22 @@ li {
   .fs-xl-64px {
     font-size: 64px;
   }
+
+  .border-l-radius-xl-2px {
+    border-left-width: 2px;
+  }
+
+  .border-r-radius-xl-2px {
+    border-right-width: 2px;
+  }
+
+  .border-bl-radius-xl-0 {
+    border-bottom-left-radius: 0;
+  }
+
+  .border-br-radius-xl-0 {
+    border-bottom-right-radius: 0;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -185,6 +280,14 @@ li {
 
   .pb-xxl-5-5 {
     padding-bottom: 5rem !important;
+  }
+
+  .pb-xxl-6-5 {
+    padding-bottom: 6rem !important;
+  }
+
+  .pe-xxl-6-5 {
+    padding-right: 6rem !important;
   }
 
   .py-xxl-6-5 {

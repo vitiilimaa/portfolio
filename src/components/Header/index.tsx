@@ -2,9 +2,26 @@ import styles from "./styles.module.css";
 import { Button } from "../";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Header = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [visibleItemsNavbarToMobile, setVisibleItemsNavbarToMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    windowWidth >= 992 && visibleItemsNavbarToMobile ? setVisibleItemsNavbarToMobile(false) : setVisibleItemsNavbarToMobile(true)
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowWidth]);
+
   function handleLinkAnimation(e: React.MouseEvent) {
     const elem = e.currentTarget;
 
@@ -18,7 +35,8 @@ const Header = () => {
       : undefined;
 
     if (targetElement) {
-      const headerHeight = 75;
+      const headerHeight = windowWidth > 1200 ? 86 : 75;
+
       window.scrollTo({
         top: targetElement.offsetTop - headerHeight,
         behavior: "smooth",
@@ -33,7 +51,10 @@ const Header = () => {
           <a className={styles.logo} href="#">
             VB
           </a>
-          <div className="d-none d-lg-flex ms-lg-6 column-gap-4 fs-xl-18px" id="navbarText">
+          <div
+            className="d-none d-lg-flex ms-lg-6 column-gap-5 fs-xl-18px"
+            id="navbarText"
+          >
             <a className="nav-link active" aria-current="page" href="#">
               Início
             </a>
@@ -70,7 +91,10 @@ const Header = () => {
               Contato
             </a>
           </div>
-          <Button title="Baixar CV" addClass="me-3 me-lg-0 py-6 fs-xl-18px mb-xl-1" />
+          <Button
+            title="Baixar CV"
+            addClass="me-3 me-lg-0 py-6 fs-xl-18px mb-xl-1"
+          />
           <button
             className={`${styles.btnMenu} d-lg-none`}
             type="button"
@@ -86,55 +110,57 @@ const Header = () => {
             />
           </button>
         </div>
-        <div className="collapse navbar-collapse" id="navbarText">
-          <ul className="navbar-nav me-auto text-center">
-            <li className="nav-item border border-start-0 border-end-0 border-top-0">
-              <a className="nav-link active" aria-current="page" href="#">
-                Início
-              </a>
-            </li>
-            <li className="nav-item border border-start-0 border-top-0 border-end-0">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="#aboutMe"
-                onClick={(e) => handleLinkAnimation(e)}
-              >
-                Sobre
-              </a>
-            </li>
-            <li className="nav-item border border-start-0 border-top-0 border-end-0">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="#projects"
-                onClick={(e) => handleLinkAnimation(e)}
-              >
-                Projetos
-              </a>
-            </li>
-            <li className="nav-item border border-start-0 border-top-0 border-end-0">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="#experience"
-                onClick={(e) => handleLinkAnimation(e)}
-              >
-                Experiência
-              </a>
-            </li>
-            <li className="nav-item border border-start-0 border-top-0 border-end-0 border-bottom-0">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="#contact"
-                onClick={(e) => handleLinkAnimation(e)}
-              >
-                Contato
-              </a>
-            </li>
-          </ul>
-        </div>
+        {visibleItemsNavbarToMobile && (
+          <div className="collapse navbar-collapse" id="navbarText">
+            <ul className="navbar-nav me-auto text-center">
+              <li className="nav-item border border-start-0 border-end-0 border-top-0">
+                <a className="nav-link active" aria-current="page" href="#">
+                  Início
+                </a>
+              </li>
+              <li className="nav-item border border-start-0 border-top-0 border-end-0">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#aboutMe"
+                  onClick={(e) => handleLinkAnimation(e)}
+                >
+                  Sobre
+                </a>
+              </li>
+              <li className="nav-item border border-start-0 border-top-0 border-end-0">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#projects"
+                  onClick={(e) => handleLinkAnimation(e)}
+                >
+                  Projetos
+                </a>
+              </li>
+              <li className="nav-item border border-start-0 border-top-0 border-end-0">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#experience"
+                  onClick={(e) => handleLinkAnimation(e)}
+                >
+                  Experiência
+                </a>
+              </li>
+              <li className="nav-item border border-start-0 border-top-0 border-end-0 border-bottom-0">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#contact"
+                  onClick={(e) => handleLinkAnimation(e)}
+                >
+                  Contato
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
       </nav>
     </header>
   );

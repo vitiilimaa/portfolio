@@ -6,13 +6,13 @@ import {
   faLinkedin,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import MyPicture from "../../img/photos/my-picture.png";
+import MyPicture from "../../img/myPhotos/my-picture.png";
 
 const Home = () => {
   return (
-    <section className="row pb-5 pb-xl-8 pb-xxl-5-5 justify-content-center align-items-center">
-      <div className="col-12 col-xl-4 text-center text-xl-start mt-xl-5">
-        <h1 className="fw-bold fs-42px fs-xl-64px text-nowrap">
+    <section className="row pb-5 justify-content-center align-items-center pb-xl-8 pb-xxl-5-5">
+      <div className="col-12 text-center col-xl-4 text-xl-start mt-xl-5">
+        <h1 className="fw-bold text-nowrap fs-42px fs-xl-64px">
           Vitor Batista
         </h1>
         <h2 className="fw-normal fs-22px fs-xl-32px">
@@ -24,7 +24,7 @@ const Home = () => {
         <a href="https://bit.ly/contrate-um-servico" target="_blank">
           <Button addClass="mt-5 fs-xl-18px" title="Bora conversar" />
         </a>
-        <div className="mt-5 mt-xl-8 gap-2 d-flex justify-content-center justify-content-xl-start align-items-center">
+        <div className="mt-5 gap-2 d-flex justify-content-center align-items-center justify-content-xl-start mt-xl-8">
           <a href="https://github.com/vitiilimaa" target="_blank">
             <FontAwesomeIcon
               className={styles.iconSocialMedia}
@@ -48,7 +48,7 @@ const Home = () => {
           </a>
         </div>
       </div>
-      <div className="col-12 col-xl-4 mt-5 mt-xl-0 text-center">
+      <div className="col-12 text-center mt-5 col-xl-4 mt-xl-0">
         <img src={MyPicture} alt="my-picture" className={styles.myPicture} />
       </div>
     </section>

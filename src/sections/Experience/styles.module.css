@@ -1,0 +1,12 @@
+.containerTimelineTitle {
+  margin-top: 3rem !important;
+  position: absolute !important;
+  left: 0;
+  z-index: 1;
+}
+
+@media (min-width: 1170px) {
+  .containerTimelineTitle {
+    position: static !important;
+  }
+}

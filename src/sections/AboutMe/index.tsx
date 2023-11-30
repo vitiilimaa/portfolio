@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import MyPictureAboutMe from "../../img/photos/my-picture-about-me.png";
+import MyPictureAboutMe from "../../img/myPhotos/my-picture-about-me.png";
 import { TitleSection } from "../../components";
 
 const AboutMe = () => {
@@ -12,30 +12,40 @@ const AboutMe = () => {
         <img
           src={MyPictureAboutMe}
           alt="my-picture-about-me"
-          className={`${styles.myPictureAboutMe} mt-5 mt-xxl-0`}
+          className={`${styles.myPictureAboutMe}`}
         />
       </div>
-      <div className="col-12 col-xl-6 mt-4 d-flex flex-column justify-content-xl-center justify-content-xxl-start gap-3">
+      <div className="col-12 mt-4 d-flex flex-column gap-3 col-xl-6 justify-content-xl-center justify-content-xxl-start">
         <TitleSection
           containerStyle="text-nowrap justify-content-xl-start"
           textStyle="px-xl-0"
           caption="Sobre mim"
         />
-        <p className="mx-2 mx-md-5 mx-xl-0 me-xl-7 mt-xxl-4 fs-xl-18px fs-xxl-22px lh-xxl-1 text-white text-justify">
+        <p className="text-white text-justify mx-2 mx-md-5 fs-xl-18px mx-xl-0 me-xl-7 mt-xxl-4 fs-xxl-22px lh-xxl-1">
           Sou um <strong>desenvolvedor front-end</strong> com
           <strong> 2 anos de experiência</strong>, atualmente buscando aprimorar
           minhas habilidades em <strong> React</strong> enquanto curso
-          <strong> Análise e Desenvolvimento de Sistemas</strong>. Minha paixão
-          pela programação me impulsiona a enfrentar novos desafios
-          constantemente, com o objetivo de me tornar um desenvolvedor mais
-          completo e eficiente.
+          <strong> Análise e Desenvolvimento de Sistemas</strong>.
         </p>
-        <div className="row mt-xxl-7">
-          <span className="col-12 col-xl-3 col-xxl-2 me-xxl-4 text-xl-start mt-3 mt-xl-5 fs-5 fs-xxl-24px text-white fw-bold">
+        <p className="text-white text-justify mx-2 mx-md-5 mx-xl-0 me-xl-7 fs-xl-18px fs-xxl-22px lh-xxl-1">
+          Meu primeiro contato com a programação foi após entrar na faculdade,
+          em que logo no <strong>primeiro semestre</strong> desafiei a mim mesmo
+          a <strong>conseguir um estágio</strong> para colocar em prática todo o
+          conhecimento que obtinha enquanto estudava. Com muito esforço, 
+          <strong> tive êxito no meu objetivo</strong>, e assim, fui aprimorando
+          as minhas habilidades ao longo do tempo.
+        </p>
+        <p className="text-white text-justify mx-2 mx-md-5 mx-xl-0 me-xl-7 fs-xl-18px fs-xxl-22px lh-xxl-1">
+          Minha paixão pela programação me impulsiona a enfrentar novos desafios
+          constantemente, com o objetivo de me tornar um{" "}
+          <strong>desenvolvedor mais completo e eficiente.</strong>
+        </p>
+        <div className="mt-4 mt-xl-5 d-xl-flex">
+          <span className="fs-5 text-white fw-bold text-xl-start pe-xl-5 fs-xxl-24px">
             Tecnologias:
           </span>
-          <div className="col-12 col-xl-9 col-xxl-9 mt-3 mt-xl-5">
-            <div className="d-flex gap-2 justify-content-center justify-content-xl-start align-items-center">
+          <div className="mt-3 mt-xl-0">
+            <div className="d-flex gap-2 justify-content-center align-items-center justify-content-xl-start">
               <i
                 className={`devicon-javascript-plain ${styles.iconTechnologies}`}
               />
@@ -49,7 +59,7 @@ const AboutMe = () => {
               <i className={`devicon-lua-plain ${styles.iconTechnologies}`} />
               <i className={`devicon-sass-plain ${styles.iconTechnologies}`} />
             </div>
-            <div className="mt-3 mb-3 d-flex gap-2 justify-content-center justify-content-xl-start align-items-center">
+            <div className="mt-3 mb-3 d-flex gap-2 justify-content-center align-items-center justify-content-xl-start">
               <i
                 className={`devicon-bootstrap-plain ${styles.iconTechnologies}`}
               />
