@@ -2,10 +2,11 @@ import { Header } from "./components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Home, AboutMe, Projects, Experience, Contact } from "./sections";
+import { HeaderContextProvider } from "./contexts/HeaderContext";
 
 const App = () => {
   return (
-    <>
+    <HeaderContextProvider>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
@@ -28,9 +29,8 @@ const App = () => {
         <Contact />
       </main>
       <footer>© 2023 - Design and Code by Vitor Batista.</footer>
-      <div>
-      </div>
-    </>
+      <div></div>
+    </HeaderContextProvider>
   );
 };
 

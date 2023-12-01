@@ -3,13 +3,24 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import Draggable from "react-draggable";
 import MessageError from "./MessageError";
+import iconInternetExplorer from "../../img/icons/iconInternetExplorer.svg";
+import useHeaderBlocker from "../../hooks/useHeaderBlocker";
 
 interface SystemXPWindowProp {
   id: number;
   title: string;
   urlGithub: string;
   urlProject: string;
-  containerStyle?: string;
+}
+
+interface WindowMaximizedProps {
+  initialized: boolean;
+  isMaximized: boolean;
+}
+
+interface WindowPositionProps {
+  x: number;
+  y: number;
 }
 
 const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
@@ -18,13 +29,22 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
   urlGithub,
   urlProject,
 }) => {
-  const [isMaximized, setIsMaximized] = useState(false);
-  const janelaRef = useRef<HTMLDivElement>(null);
-  const topJanelaRef = useRef<HTMLDivElement>(null);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(0);
-  const [headerHeight, setHeaderHeight] = useState(87);
-  const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
+  const [windowMaximized, setIsWindowMaximized] =
+    useState<WindowMaximizedProps>({
+      initialized: false,
+      isMaximized: false,
+    });
+  const windowRef = useRef<HTMLDivElement>(null);
+  const windowTopRef = useRef<HTMLDivElement>(null);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState<number>(0);
+  const [headerHeight, setHeaderHeight] = useState<number>(87);
+  const [windowPosition, setWindowPosition] = useState<WindowPositionProps>({
+    x: 0,
+    y: 0,
+  });
+  const { blockHeader, setBlockHeader, setMaximizedXPWindow } =
+    useHeaderBlocker();
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,15 +70,14 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
     };
   }, [windowWidth]);
 
-  const animationProps = useSpring({
-    width: isMaximized ? windowWidth : 720,
-    height: isMaximized ? windowHeight : 544,
-    top: 0,
-    left: 0,
-    onRest: () => {
-      const currentWindow = janelaRef.current as HTMLElement;
-
-      if (isMaximized) {
+  useEffect(() => {
+    if (windowMaximized.initialized) {
+      handleFocusWindows();
+      const currentWindow = windowRef.current as HTMLElement;
+      const section = currentWindow?.parentElement?.parentElement;
+      const sectionOffsetTop = section?.offsetTop || 0;
+      if (windowMaximized.isMaximized) {
+        setMaximizedXPWindow(windowMaximized.isMaximized);
         setWindowPosition({ x: 0, y: 0 });
         window.scrollTo({
           top: currentWindow.offsetTop - headerHeight,
@@ -66,59 +85,72 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         });
         document.documentElement.style.overflowY = "hidden";
       } else {
+        setBlockHeader(false);
+        setMaximizedXPWindow(windowMaximized.isMaximized);
         window.scrollTo({
-          top: currentWindow.offsetTop - 50 - headerHeight,
+          top: sectionOffsetTop - headerHeight,
           behavior: "smooth",
         });
         document.documentElement.style.overflowY = "scroll";
       }
-    },
+    }
+  }, [windowMaximized]);
+
+  function handleFocusWindows() {
+    const currentWindow = windowRef.current as HTMLElement;
+    const currentWindowTop = windowTopRef.current as HTMLElement;
+    windowRef.current?.parentNode?.childNodes.forEach((element) => {
+      const iteratedElement = element as HTMLElement;
+      const zIndexValue = +iteratedElement.style.zIndex;
+
+      if (
+        (iteratedElement as HTMLElement) &&
+        iteratedElement?.id === currentWindow.id
+      ) {
+        if (zIndexValue === 1) {
+          currentWindow.style.zIndex = "2" || null;
+          currentWindow.style.filter = "contrast(1)";
+          currentWindowTop.style.filter = "contrast(1)";
+        }
+      } else {
+        iteratedElement.style.zIndex = "1";
+        iteratedElement.style.filter = "contrast(.8)";
+        windowMaximized.isMaximized
+          ? (iteratedElement.style.display = "none")
+          : (iteratedElement.style.display = "block");
+      }
+    });
+  }
+
+  const animationProps = useSpring({
+    width: windowMaximized.isMaximized ? windowWidth : 720,
+    height: windowMaximized.isMaximized ? windowHeight : 544,
+    top: 0,
+    left: 0,
   });
 
   return (
     <Draggable
-      onStart={() => {
-        const currentWindow = janelaRef.current as HTMLElement;
-        const currentWindowTop = topJanelaRef.current as HTMLElement;
-
-        janelaRef.current?.parentNode?.childNodes.forEach((element) => {
-          const iteratedElement = element as HTMLElement;
-          const zIndexValue = +iteratedElement.style.zIndex;
-
-          if (
-            (iteratedElement as HTMLElement) &&
-            iteratedElement?.id === currentWindow.id
-          ) {
-            if (zIndexValue === 1) {
-              currentWindow.style.zIndex = "2" || null;
-              currentWindow.style.filter = "contrast(1)";
-              currentWindowTop.style.filter = "contrast(1)";
-            }
-          } else {
-            iteratedElement.style.zIndex = "1";
-            iteratedElement.style.filter = "contrast(.8)";
-          }
-        });
-      }}
+      onStart={handleFocusWindows}
       onDrag={(_, ui) => {
         setWindowPosition({ x: ui.x, y: ui.y });
       }}
       position={windowPosition}
-      disabled={isMaximized}
-      nodeRef={janelaRef}
+      disabled={windowMaximized.isMaximized}
+      nodeRef={windowRef}
     >
       <animated.div
         id={`window-${id}`}
         className={`${styles.window}`}
-        ref={janelaRef}
+        ref={windowRef}
         style={{ ...animationProps, zIndex: 1 }}
       >
-        <div className={styles.topBar} ref={topJanelaRef}>
+        <div className={styles.topBar} ref={windowTopRef}>
           <div className={styles.titleBar}>
             <img
               width="16"
               height="16"
-              src="https://upload.wikimedia.org/wikipedia/commons/1/18/Internet_Explorer_10%2B11_logo.svg"
+              src={iconInternetExplorer}
               alt="IE Logo"
             />
             <p
@@ -136,10 +168,10 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
             <button
               aria-label="Maximize"
               onClick={() => {
-                if (!isMaximized) {
-                  setWindowPosition({ x: 0, y: 0 });
-                }
-                setIsMaximized(!isMaximized);
+                setIsWindowMaximized({
+                  initialized: true,
+                  isMaximized: !windowMaximized.isMaximized,
+                });
               }}
             />
             <button aria-label="Close" />
@@ -147,10 +179,10 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         </div>
         <div style={{ background: "#f1eee5" }}>
           <div className={styles.textOptions}>
-            <a href={urlGithub} target="_blank" rel="noopener noreferrer">
+            <a href={urlGithub} target="_blank">
               Repositório
             </a>
-            <a href={urlProject} target="_blank" rel="noopener noreferrer">
+            <a href={urlProject} target="_blank">
               Abrir em nova guia
             </a>
           </div>
@@ -159,14 +191,12 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         <div className={styles.windowBody}>
           <iframe className={styles.iframe} src={urlProject} title={title} />
         </div>
-        {isMaximized && (
-          <MessageError
-            title={title}
-            message={
-              "Para conseguir navegar entre as sessões, minimize a janela do projeto."
-            }
-          />
-        )}
+        <MessageError
+          title={title}
+          message={
+            "Para conseguir navegar entre as sessões, minimize a janela do projeto."
+          }
+        />
       </animated.div>
     </Draggable>
   );

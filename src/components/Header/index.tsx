@@ -3,10 +3,14 @@ import { Button } from "../";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
+import useHeaderBlocker from "../../hooks/useHeaderBlocker";
 
 const Header = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [visibleItemsNavbarToMobile, setVisibleItemsNavbarToMobile] = useState(false);
+  const [visibleItemsNavbarToMobile, setVisibleItemsNavbarToMobile] =
+    useState(false);
+  const { maximizedXPWindow, setBlockHeader, setShowError } =
+    useHeaderBlocker();
 
   useEffect(() => {
     const handleResize = () => {
@@ -15,7 +19,9 @@ const Header = () => {
 
     window.addEventListener("resize", handleResize);
 
-    windowWidth >= 992 && visibleItemsNavbarToMobile ? setVisibleItemsNavbarToMobile(false) : setVisibleItemsNavbarToMobile(true)
+    windowWidth >= 992 && visibleItemsNavbarToMobile
+      ? setVisibleItemsNavbarToMobile(false)
+      : setVisibleItemsNavbarToMobile(true);
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -23,11 +29,30 @@ const Header = () => {
   }, [windowWidth]);
 
   function handleLinkAnimation(e: React.MouseEvent) {
+    const audio = new Audio("https://www.myinstants.com/media/sounds/erro.mp3");
     const elem = e.currentTarget;
+    if (elem.getAttribute("href") === "#") {
+      if (maximizedXPWindow) {
+        setShowError(true);
+        audio.play();
+        e.preventDefault();
+      } else {
+        setShowError(false);
+      }
+    } else {
+      e.preventDefault();
+    }
+
+    if (maximizedXPWindow) {
+      setShowError(true);
+
+      audio.play();
+      return setBlockHeader(true);
+    } else {
+      setShowError(false);
+    }
 
     if (elem.getAttribute("href") === "#") return;
-
-    e.preventDefault();
 
     const targetId = elem.getAttribute("href")?.slice(1); //remove o "#" do href
     const targetElement = targetId
@@ -48,14 +73,24 @@ const Header = () => {
     <header className="fixed-top">
       <nav className="flex-wrap navbar pb-0">
         <div className="w-100 d-flex justify-content-around align-items-center pt-1 pt-xl-2 pb-2-5">
-          <a className={styles.logo} href="#">
+          <a
+            className={styles.logo}
+            aria-current="page"
+            href="#"
+            onClick={(e) => handleLinkAnimation(e)}
+          >
             VB
           </a>
           <div
             className="d-none d-lg-flex ms-lg-6 column-gap-5 fs-xl-18px"
             id="navbarText"
           >
-            <a className="nav-link active" aria-current="page" href="#">
+            <a
+              className="nav-link active"
+              aria-current="page"
+              href="#"
+              onClick={(e) => handleLinkAnimation(e)}
+            >
               Início
             </a>
             <a
