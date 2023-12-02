@@ -1,22 +1,31 @@
 import React, { ReactNode } from "react";
 import { createContext, useState } from "react";
 
+interface HeaderContextProps {
+  maximizedXPWindow: boolean;
+  setMaximizedXPWindow: (value: boolean) => void;
+  showError: boolean;
+  setShowError: (value: boolean) => void;
+}
+
 interface HeaderContextProviderProps {
   children: ReactNode;
 }
 
-const HeaderContext = createContext({});
+const HeaderContext = createContext<HeaderContextProps>({
+  maximizedXPWindow: false,
+  setMaximizedXPWindow: () => {},
+  showError: false,
+  setShowError: () => {}
+});
 
 const HeaderContextProvider: React.FC<HeaderContextProviderProps> = ({
   children,
 }) => {
-  const [blockHeader, setBlockHeader] = useState<boolean>(false);
   const [maximizedXPWindow, setMaximizedXPWindow] = useState<boolean>(false);
-  const [showError, setShowError] = useState(false);
+  const [showError, setShowError] = useState<boolean>(false);
 
   const block = {
-    blockHeader,
-    setBlockHeader,
     maximizedXPWindow,
     setMaximizedXPWindow,
     showError,
@@ -29,3 +38,4 @@ const HeaderContextProvider: React.FC<HeaderContextProviderProps> = ({
 };
 
 export { HeaderContext, HeaderContextProvider };
+export type { HeaderContextProps }

@@ -4,13 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
 import useHeaderBlocker from "../../hooks/useHeaderBlocker";
+import errorWinXP from "../../audio/errorWinXP.mp3";
+import { saveAs } from "file-saver";
 
 const Header = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [visibleItemsNavbarToMobile, setVisibleItemsNavbarToMobile] =
     useState(false);
-  const { maximizedXPWindow, setBlockHeader, setShowError } =
-    useHeaderBlocker();
+  const { maximizedXPWindow, setShowError } = useHeaderBlocker();
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,46 +29,36 @@ const Header = () => {
     };
   }, [windowWidth]);
 
-  function handleLinkAnimation(e: React.MouseEvent) {
-    const audio = new Audio("https://www.myinstants.com/media/sounds/erro.mp3");
+  const handleLinkAnimation = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    const audio = new Audio(errorWinXP);
     const elem = e.currentTarget;
-    if (elem.getAttribute("href") === "#") {
-      if (maximizedXPWindow) {
-        setShowError(true);
-        audio.play();
-        e.preventDefault();
-      } else {
-        setShowError(false);
-      }
-    } else {
-      e.preventDefault();
-    }
+    const targetId = elem.getAttribute("href")?.slice(1);
 
     if (maximizedXPWindow) {
       setShowError(true);
-
       audio.play();
-      return setBlockHeader(true);
+      return;
     } else {
       setShowError(false);
     }
 
-    if (elem.getAttribute("href") === "#") return;
-
-    const targetId = elem.getAttribute("href")?.slice(1); //remove o "#" do href
     const targetElement = targetId
       ? document.getElementById(targetId)
       : undefined;
 
-    if (targetElement) {
-      const headerHeight = windowWidth > 1200 ? 86 : 75;
+    const headerHeight = windowWidth > 1200 ? 86 : 75;
 
-      window.scrollTo({
-        top: targetElement.offsetTop - headerHeight,
-        behavior: "smooth",
-      });
-    }
-  }
+    const elementOffsetTop = targetElement
+      ? targetElement.offsetTop - headerHeight
+      : 0;
+
+    window.scrollTo({
+      top: elementOffsetTop,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <header className="fixed-top">
@@ -81,17 +72,14 @@ const Header = () => {
           >
             VB
           </a>
-          <div
-            className="d-none d-lg-flex ms-lg-6 column-gap-5 fs-xl-18px"
-            id="navbarText"
-          >
+          <div className="d-none d-lg-flex ms-lg-6 column-gap-5 fs-xl-18px">
             <a
               className="nav-link active"
               aria-current="page"
               href="#"
               onClick={(e) => handleLinkAnimation(e)}
             >
-              Início
+              Início<span className={styles.point}>.</span>
             </a>
             <a
               className="nav-link active"
@@ -99,7 +87,7 @@ const Header = () => {
               href="#aboutMe"
               onClick={(e) => handleLinkAnimation(e)}
             >
-              Sobre
+              Sobre<span className={styles.point}>.</span>
             </a>
             <a
               className="nav-link active"
@@ -107,7 +95,7 @@ const Header = () => {
               href="#projects"
               onClick={(e) => handleLinkAnimation(e)}
             >
-              Projetos
+              Projetos<span className={styles.point}>.</span>
             </a>
             <a
               className="nav-link active"
@@ -115,7 +103,7 @@ const Header = () => {
               href="#experience"
               onClick={(e) => handleLinkAnimation(e)}
             >
-              Experiência
+              Experiência<span className={styles.point}>.</span>
             </a>
             <a
               className="nav-link active"
@@ -123,12 +111,13 @@ const Header = () => {
               href="#contact"
               onClick={(e) => handleLinkAnimation(e)}
             >
-              Contato
+              Contato<span className={styles.point}>.</span>
             </a>
           </div>
           <Button
             title="Baixar CV"
             addClass="me-3 me-lg-0 py-6 fs-xl-18px mb-xl-1"
+            onPress={() => saveAs("/resume.pdf", "Curriculo_Vitor_Hugo")}
           />
           <button
             className={`${styles.btnMenu} d-lg-none`}
@@ -146,7 +135,7 @@ const Header = () => {
           </button>
         </div>
         {visibleItemsNavbarToMobile && (
-          <div className="collapse navbar-collapse" id="navbarText">
+          <div className="collapse navbar-collapse">
             <ul className="navbar-nav me-auto text-center">
               <li className="nav-item border border-start-0 border-end-0 border-top-0">
                 <a className="nav-link active" aria-current="page" href="#">

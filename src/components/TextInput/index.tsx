@@ -5,8 +5,10 @@ interface TextInputProps {
   title: string;
   type?: string;
   value: string;
-  containerStyle?: string;
   onChangeValue: (newValue: string) => void;
+  isValidate?: boolean | null;
+  errorMessage?: string;
+  addClassToContainer?: string;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -14,42 +16,47 @@ const TextInput: React.FC<TextInputProps> = ({
   title,
   type,
   value,
-  containerStyle,
   onChangeValue,
+  isValidate,
+  errorMessage,
+  addClassToContainer = "",
 }) => {
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
-    const newValue = e.target.value;
-    onChangeValue(newValue);
-  }
-
   return (
-    <div className={`${containerStyle} form-floating`}>
+    <div className={`form-floating ${addClassToContainer}`}>
       {type?.toUpperCase() === "MEMO" ? (
-        <textarea
-          className="form-control"
-          placeholder={title}
-          name={id}
-          id={id}
-          value={value}
-          onChange={(e) => handleChange(e)}
-          cols={30}
-          rows={10}
-          style={{ height: 200, resize: "none" }}
-          autoComplete="off"
-        />
+        <>
+          <textarea
+            className={`form-control ${
+              isValidate === false ? "is-invalid" : ""
+            }`}
+            placeholder={title}
+            name={id}
+            id={id}
+            value={value}
+            onChange={(e) => onChangeValue(e.target.value)}
+            cols={30}
+            rows={10}
+            style={{ height: 200, resize: "none" }}
+            autoComplete="off"
+          />
+          <div className="invalid-feedback">{errorMessage}</div>
+        </>
       ) : (
-        <input
-          className="form-control"
-          placeholder={title}
-          name={id}
-          id={id}
-          type={type ? type : "text"}
-          value={value}
-          onChange={(e) => handleChange(e)}
-          autoComplete="off"
-        />
+        <>
+          <input
+            className={`form-control ${
+              isValidate === false ? "is-invalid" : ""
+            }`}
+            placeholder={title}
+            name={id}
+            id={id}
+            type={type ? type : "text"}
+            value={value}
+            onChange={(e) => onChangeValue(e.target.value)}
+            autoComplete="off"
+          />
+          <div className="invalid-feedback">{errorMessage}</div>
+        </>
       )}
       <label htmlFor={id}>{title}</label>
     </div>

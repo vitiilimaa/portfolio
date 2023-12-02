@@ -4,14 +4,14 @@ import React from "react";
 interface TitleSectionProps {
   caption: string;
   showPoint?: boolean;
-  containerStyle?: string;
-  textStyle?: string;
+  addClassToContainer?: string;
+  addClassToText?: string;
 }
 
-const TitleSection: React.FC<TitleSectionProps> = ({ caption, containerStyle, textStyle }) => {
+const TitleSection: React.FC<TitleSectionProps> = ({ caption, addClassToContainer = "", addClassToText = "" }) => {
   return (
-    <div className={`col-12 d-flex justify-content-center align-items-center ${containerStyle}`}>
-    <h1 className={`${styles.titleSections} ${textStyle} fs-xxl-64px`}>
+    <div className={`col-12 d-flex justify-content-center align-items-center ${addClassToContainer}`}>
+    <h1 className={`${styles.titleSections} ${addClassToText} fs-xxl-64px`}>
       {caption}
       <span style={{ color: "#ffff00" }}>.</span>
     </h1>

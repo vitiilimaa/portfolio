@@ -9,19 +9,27 @@ interface ButtonProps {
   isLoading?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ type, title, addClass, onPress, isLoading }) => {
+const Button: React.FC<ButtonProps> = ({
+  type,
+  title,
+  onPress,
+  isLoading,
+  addClass = "",
+}) => {
   return (
     <button
       type={type ? type : "button"}
       className={`${styles.btn} ${addClass}`}
       onClick={onPress}
-    > 
+    >
       {isLoading ? (
-        <div className={`spinner-border text-light ${styles.loading}`} role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-
-      ) : title}
+        <div
+          className={`spinner-border text-light ${styles.loading}`}
+          role="status"
+        />
+      ) : (
+        title
+      )}
     </button>
   );
 };

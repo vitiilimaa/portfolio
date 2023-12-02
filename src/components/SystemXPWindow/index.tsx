@@ -43,8 +43,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
     x: 0,
     y: 0,
   });
-  const { blockHeader, setBlockHeader, setMaximizedXPWindow } =
-    useHeaderBlocker();
+  const { setMaximizedXPWindow } = useHeaderBlocker();
 
   useEffect(() => {
     const handleResize = () => {
@@ -85,7 +84,6 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         });
         document.documentElement.style.overflowY = "hidden";
       } else {
-        setBlockHeader(false);
         setMaximizedXPWindow(windowMaximized.isMaximized);
         window.scrollTo({
           top: sectionOffsetTop - headerHeight,
@@ -164,9 +162,9 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
             </p>
           </div>
           <div className={styles.areaButtons}>
-            <button className={styles.windowButton} aria-label="Minimize" />
+            <button className={styles.windowButton} id="minimizeXPWindow" />
             <button
-              aria-label="Maximize"
+              id="maximizeXPWindow"
               onClick={() => {
                 setIsWindowMaximized({
                   initialized: true,
@@ -174,7 +172,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
                 });
               }}
             />
-            <button aria-label="Close" />
+            <button id="closeXPWindow" />
           </div>
         </div>
         <div style={{ background: "#f1eee5" }}>
@@ -191,12 +189,14 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         <div className={styles.windowBody}>
           <iframe className={styles.iframe} src={urlProject} title={title} />
         </div>
-        <MessageError
-          title={title}
-          message={
-            "Para conseguir navegar entre as sessões, minimize a janela do projeto."
-          }
-        />
+        {windowMaximized.isMaximized && (
+          <MessageError
+            title={title}
+            message={
+              "Para conseguir navegar entre as sessões, minimize a janela do projeto."
+            }
+          />
+        )}
       </animated.div>
     </Draggable>
   );

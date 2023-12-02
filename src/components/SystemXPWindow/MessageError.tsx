@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import iconErrorWinXP from "../../img/icons/iconErrorWinXP.png";
 import useHeaderBlocker from "../../hooks/useHeaderBlocker";
+import { animated, useSpring } from "@react-spring/web";
 
 interface MessageErrorProps {
   title: string;
@@ -10,9 +11,17 @@ interface MessageErrorProps {
 
 const MessageError: React.FC<MessageErrorProps> = ({ title, message }) => {
   const { showError, setShowError } = useHeaderBlocker();
+
+  const animationProps = useSpring({
+    to: { opacity: 1 },
+  });
+
   return (
     showError && (
-      <div className={styles.error}>
+      <animated.div
+        style={{ ...animationProps, zIndex: 1 }}
+        className={styles.error}
+      >
         <div className={styles.topBar}>
           <div className={styles.titleBar}>
             <p>Error - App{title.replace(/\s/g, "")}.exe</p>
@@ -20,7 +29,7 @@ const MessageError: React.FC<MessageErrorProps> = ({ title, message }) => {
           <div className={styles.areaButtonsMessageError}>
             <button
               style={{ filter: "contrast(100%)" }}
-              aria-label="Close"
+              id="closeErrorXPWindow"
               onClick={() => setShowError(false)}
             />
           </div>
@@ -32,7 +41,7 @@ const MessageError: React.FC<MessageErrorProps> = ({ title, message }) => {
         <button className={styles.ok} onClick={() => setShowError(false)}>
           <span>OK</span>
         </button>
-      </div>
+      </animated.div>
     )
   );
 };

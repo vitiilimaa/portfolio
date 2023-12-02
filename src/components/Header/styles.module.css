@@ -8,6 +8,15 @@
   cursor: pointer;
 }
 
+.point {
+  color: transparent;
+  transition: 0.2s;
+}
+
+a:hover > .point {
+  color: #ffff00;
+}
+
 .btnMenu {
   border: 0 solid transparent;
   background-color: transparent;

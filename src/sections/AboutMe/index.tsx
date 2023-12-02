@@ -1,24 +1,42 @@
 import styles from "./styles.module.css";
 import MyPictureAboutMe from "../../img/myPhotos/my-picture-about-me.png";
 import { TitleSection } from "../../components";
+import { useInView, animated } from "@react-spring/web";
 
 const AboutMe = () => {
+  const [ref, springs] = useInView(() => ({
+    from: {
+      transform: "scale(0)",
+    },
+    to: {
+      transform: "scale(1)",
+    },
+  }));
+
   return (
     <section
       id="aboutMe"
       className="row bg-black px-3 pb-5 text-center py-xl-6 py-xxl-6-5"
     >
-      <div className="col-12 col-xl-6">
+      <animated.div
+        ref={ref}
+        style={springs}
+        className="col-12 mt-5 col-xl-6 mt-xl-0"
+      >
         <img
           src={MyPictureAboutMe}
           alt="my-picture-about-me"
           className={`${styles.myPictureAboutMe}`}
         />
-      </div>
-      <div className="col-12 mt-4 d-flex flex-column gap-3 col-xl-6 justify-content-xl-center justify-content-xxl-start">
+      </animated.div>
+      <animated.div
+        ref={ref}
+        style={springs}
+        className="col-12 mt-4 d-flex flex-column gap-3 col-xl-6 justify-content-xl-center justify-content-xxl-start"
+      >
         <TitleSection
-          containerStyle="text-nowrap justify-content-xl-start"
-          textStyle="px-xl-0"
+          addClassToContainer="text-nowrap justify-content-xl-start"
+          addClassToText="px-xl-0"
           caption="Sobre mim"
         />
         <p className="text-white text-justify mx-2 mx-md-5 fs-xl-18px mx-xl-0 me-xl-7 mt-xxl-4 fs-xxl-22px lh-xxl-1">
@@ -31,7 +49,7 @@ const AboutMe = () => {
           Meu primeiro contato com a programação foi após entrar na faculdade,
           em que logo no <strong>primeiro semestre</strong> desafiei a mim mesmo
           a <strong>conseguir um estágio</strong> para colocar em prática todo o
-          conhecimento que obtinha enquanto estudava. Com muito esforço, 
+          conhecimento que obtinha enquanto estudava. Com muito esforço,
           <strong> tive êxito no meu objetivo</strong>, e assim, fui aprimorando
           as minhas habilidades ao longo do tempo.
         </p>
@@ -75,7 +93,7 @@ const AboutMe = () => {
             </div>
           </div>
         </div>
-      </div>
+      </animated.div>
     </section>
   );
 };

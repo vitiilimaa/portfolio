@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { HeaderContext } from "../contexts/HeaderContext";
+import { HeaderContext, HeaderContextProps } from "../contexts/HeaderContext";
 
-const useHeaderBlocker = () => useContext(HeaderContext)
+const useHeaderBlocker = (): HeaderContextProps => useContext(HeaderContext)
 
 export default useHeaderBlocker

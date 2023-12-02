@@ -7,9 +7,8 @@ interface SubmitObject {
   message: string;
 }
 
-async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, obj: SubmitObject) {
+async function submit(obj: SubmitObject) {
   try {
-    e.preventDefault()
     await fetch("https://formsubmit.co/ajax/vitiilimaa@gmail.com", {
       method: "POST",
       headers: {
