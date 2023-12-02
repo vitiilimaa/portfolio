@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
 import { TitleSection, Button, TextInput, SocialMedia } from "../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -60,7 +60,6 @@ const Contact = () => {
       message: "",
     },
   });
-  const formRef = useRef<HTMLFormElement>(null);
   const [ref, springs] = useInView(() => ({
     from: {
       transform: "scale(0)",
@@ -109,10 +108,7 @@ const Contact = () => {
         </div>
       </animated.div>
       <animated.div ref={ref} style={springs} className="col-12 col-xl-6">
-        <form
-          ref={ref}
-          className="mb-4 mt-4 bg-white text-black py-4 px-4 px-xl-5 mb-xl-0 mt-xl-5-5 fs-xxl-18px"
-        >
+        <form className="mb-4 mt-4 bg-white text-black py-4 px-4 px-xl-5 mb-xl-0 mt-xl-5-5 fs-xxl-18px">
           <p className="mt-2">
             Estou disponível para <b>freelance</b> também
           </p>
@@ -236,8 +232,9 @@ const Contact = () => {
                 setIsLoading(true);
                 await submit(fields);
                 setIsLoading(false);
-                (Object.keys(fields) as Array<keyof FieldsProps>).map(
-                  (field) => setFields((prevState) => ({ ...prevState, [field]: "" })))
+                (Object.keys(fields) as Array<keyof FieldsProps>).map((field) =>
+                  setFields((prevState) => ({ ...prevState, [field]: "" }))
+                );
               } else {
                 (Object.keys(fields) as Array<keyof FieldsProps>).map(
                   (field) => {
