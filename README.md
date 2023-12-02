@@ -1,27 +1,33 @@
-# React + TypeScript + Vite
+<h2 align="center">
+  Portfólio<br/>
+  <a href="" target="_blank">vitorbatista.dev</a>
+</h2>
+<div align="center">
+  <img alt="Demo" src="/public/demo_portfolio.png" />
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br/>
 
-Currently, two official plugins are available:
+## Introdução
+O desenvolvimento do portfolio teve início com o design no Figma, em que a minha ideia era trazer uma interface minimalista, porém elegante a cada pessoa que for visualizá-lo. Além de colocar em prática conceitos aprendidos através dos meus estudos, expandi a minha imaginação para acrescentar "loucuras" que poderiam ser implementadas no projeto, como por exemplo, um sistema operacional "rodando" dentro de um ambiente web. 🤯
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Haverá atualizações, principalmente na parte de animações, mas por enquanto, vamos dizer que é uma versão alfa. 😅
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- Typescript
+- Bootstrap
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+**📖 Layout de página única**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**📱 Totalmente responsivo**
+
+**🎨 Design minimalista com animações**
+
+**👨‍💻 Sessão projetos com interface do Windows XP, podendo arrastar as janelas dentro/fora da própria sessão, maximizar/minimizar um projeto e mensagem de erro quando um projeto está maximizado e o usuário tenta navegar pelo header **
+
+## Status
+✔️ Concluído
