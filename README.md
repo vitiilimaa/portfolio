@@ -27,7 +27,7 @@ Haverá atualizações, principalmente na parte de animações, mas por enquanto
 
 **🎨 Design minimalista com animações**
 
-**👨‍💻 Sessão projetos com interface do Windows XP, podendo arrastar as janelas dentro/fora da própria sessão, maximizar/minimizar um projeto e mensagem de erro quando um projeto está maximizado e o usuário tenta navegar pelo header **
+**👨‍💻 Sessão projetos com interface do Windows XP, podendo arrastar as janelas dentro/fora da própria sessão, maximizar/minimizar um projeto e mensagem de erro quando um projeto está maximizado e o usuário tenta navegar pelo header**
 
 ## Status
 ✔️ Concluído
