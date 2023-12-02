@@ -64,7 +64,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({
         onMouseLeave={() => setInstagramHovered(false)}
         style={instagramAnimationProps}
       >
-        <a href="https://www.instagram.com/vitor.batistavb/" target="_blank">
+        <a href="https://www.instagram.com/vitorhugo.tsx/" target="_blank">
           <FontAwesomeIcon
             icon={faInstagram}
             style={{ color: color, fontSize: fontSize }}
