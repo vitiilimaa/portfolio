@@ -9,7 +9,7 @@ interface SubmitObject {
 
 async function submit(obj: SubmitObject) {
   try {
-    await fetch("https://formsubmit.co/ajax/vitiilimaa@gmail.com", {
+    await fetch("https://formsubmit.co/ajax/contato@vitorbatista.dev", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
