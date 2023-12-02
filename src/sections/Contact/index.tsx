@@ -88,7 +88,7 @@ const Contact = () => {
                 icon={faEnvelope}
               />
             </span>
-            vitilimaa@gmail.com
+            contato@vitorbatista.dev
           </p>
           <p className="d-flex column-gap-2 align-items-center mt-3 fs-xxl-18px">
             <span className={styles.containerIconsContact}>
