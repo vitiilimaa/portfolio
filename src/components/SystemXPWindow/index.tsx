@@ -166,7 +166,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
             <button
               id="maximizeXPWindow"
               onClick={() => {
-                if (windowWidth < 800) {
+                if (windowWidth > 800) {
                   setIsWindowMaximized({
                     initialized: true,
                     isMaximized: !windowMaximized.isMaximized,
