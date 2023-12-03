@@ -134,7 +134,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         setWindowPosition({ x: ui.x, y: ui.y });
       }}
       position={windowPosition}
-      disabled={windowMaximized.isMaximized || windowWidth > 800}
+      disabled={windowMaximized.isMaximized || windowWidth < 800}
       nodeRef={windowRef}
     >
       <animated.div
