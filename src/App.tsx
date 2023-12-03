@@ -8,7 +8,6 @@ const App = () => {
   return (
     <HeaderContextProvider>
       <ToastContainer
-        style={{ width: "22rem" }}
         position="bottom-right"
         autoClose={5000}
         hideProgressBar={false}
