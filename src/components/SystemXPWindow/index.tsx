@@ -129,17 +129,17 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
 
   return (
     <Draggable
-      onStart={handleFocusWindows}
       onDrag={(_, ui) => {
         setWindowPosition({ x: ui.x, y: ui.y });
       }}
       position={windowPosition}
-      disabled={windowMaximized.isMaximized || windowWidth < 800}
+      disabled={windowMaximized.isMaximized || windowWidth < 992}
       nodeRef={windowRef}
     >
       <animated.div
         id={`window-${id}`}
         className={`${styles.window}`}
+        onFocus={handleFocusWindows}
         ref={windowRef}
         style={{ ...animationProps, zIndex: 1 }}
       >
@@ -166,12 +166,12 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
             <button
               id="maximizeXPWindow"
               onClick={() => {
-                // if (windowWidth > 800) {
+                if (windowWidth > 992) {
                   setIsWindowMaximized({
                     initialized: true,
                     isMaximized: !windowMaximized.isMaximized,
                   });
-                // }
+                }
               }}
             />
             <button id="closeXPWindow" />
