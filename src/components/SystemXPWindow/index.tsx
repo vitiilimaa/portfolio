@@ -134,7 +134,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         setWindowPosition({ x: ui.x, y: ui.y });
       }}
       position={windowPosition}
-      disabled={windowMaximized.isMaximized}
+      disabled={windowMaximized.isMaximized || windowWidth > 800}
       nodeRef={windowRef}
     >
       <animated.div
@@ -166,10 +166,12 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
             <button
               id="maximizeXPWindow"
               onClick={() => {
-                setIsWindowMaximized({
-                  initialized: true,
-                  isMaximized: !windowMaximized.isMaximized,
-                });
+                if (windowWidth < 800) {
+                  setIsWindowMaximized({
+                    initialized: true,
+                    isMaximized: !windowMaximized.isMaximized,
+                  });
+                }
               }}
             />
             <button id="closeXPWindow" />
