@@ -135,11 +135,11 @@ const Header = () => {
           </button>
         </div>
         {visibleItemsNavbarToMobile && (
-          <div className="collapse navbar-collapse">
+          <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto text-center">
               <li className="nav-item border border-start-0 border-end-0 border-top-0">
                 <a className="nav-link active" aria-current="page" href="#">
-                  Início
+                  Início<span className={styles.point}>.</span>
                 </a>
               </li>
               <li className="nav-item border border-start-0 border-top-0 border-end-0">
@@ -149,7 +149,7 @@ const Header = () => {
                   href="#aboutMe"
                   onClick={(e) => handleLinkAnimation(e)}
                 >
-                  Sobre
+                  Sobre<span className={styles.point}>.</span>
                 </a>
               </li>
               <li className="nav-item border border-start-0 border-top-0 border-end-0">
@@ -159,7 +159,7 @@ const Header = () => {
                   href="#projects"
                   onClick={(e) => handleLinkAnimation(e)}
                 >
-                  Projetos
+                  Projetos<span className={styles.point}>.</span>
                 </a>
               </li>
               <li className="nav-item border border-start-0 border-top-0 border-end-0">
@@ -169,7 +169,7 @@ const Header = () => {
                   href="#experience"
                   onClick={(e) => handleLinkAnimation(e)}
                 >
-                  Experiência
+                  Experiência<span className={styles.point}>.</span>
                 </a>
               </li>
               <li className="nav-item border border-start-0 border-top-0 border-end-0 border-bottom-0">
@@ -179,7 +179,7 @@ const Header = () => {
                   href="#contact"
                   onClick={(e) => handleLinkAnimation(e)}
                 >
-                  Contato
+                  Contato<span className={styles.point}>.</span>
                 </a>
               </li>
             </ul>

@@ -77,8 +77,8 @@ const Contact = () => {
       <animated.div ref={ref} style={springs} className="col-12 col-xl-4">
         <TitleSection
           caption="Contato"
-          addClassToText="px-xl-0"
-          addClassToContainer="mt-5 mb-2 justify-content-xl-start"
+          addClassToText="px-0"
+          addClassToContainer="mt-5 mb-2 justify-content-start"
         />
         <div className="mt-4 text-white">
           <p className="d-flex column-gap-2 align-items-center fs-xxl-18px">

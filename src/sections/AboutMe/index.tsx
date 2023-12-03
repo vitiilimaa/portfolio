@@ -35,7 +35,7 @@ const AboutMe = () => {
         className="col-12 mt-4 d-flex flex-column gap-3 col-xl-6 justify-content-xl-center justify-content-xxl-start"
       >
         <TitleSection
-          addClassToContainer="text-nowrap justify-content-xl-start"
+          addClassToContainer="text-nowrap justify-content-center justify-content-xl-start"
           addClassToText="px-xl-0"
           caption="Sobre mim"
         />

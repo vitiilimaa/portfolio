@@ -8,9 +8,9 @@ const Projects = () => {
       id="projects"
       className={`${styles.desktop} row text-center gap-5 pb-5 gap-xl-0`}
     >
-      <TitleSection addClassToContainer="mt-5" caption="Projetos" />
+      <TitleSection addClassToContainer="mt-5 justify-content-center" caption="Projetos" />
       <div
-        className="col-12 d-flex flex-wrap justify-content-around align-items-around gap-5 mt-xl-5"
+        className="col-12 d-flex flex-wrap px-5 justify-content-around align-items-around gap-5 mt-xl-5"
       >
         {systemXPWindowData.map((data, key) => (
           <SystemXPWindow

@@ -5,7 +5,7 @@ const Experience = () => {
   return (
     <section id="experience" className="row">
       <TitleSection
-        addClassToContainer={styles.containerTimelineTitle}
+        addClassToContainer={`${styles.containerTimelineTitle} justify-content-center`}
         caption="Experiência"
       />
       <Timeline />
