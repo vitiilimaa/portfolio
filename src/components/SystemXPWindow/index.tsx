@@ -130,7 +130,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
       <animated.div
         id={`window-${id}`}
         className={`${styles.window}`}
-        onFocus={handleFocusWindows}
+        onClick={handleFocusWindows}
         ref={windowRef}
         style={{ ...animationProps, zIndex: 1 }}
       >
