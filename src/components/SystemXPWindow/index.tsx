@@ -52,16 +52,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
 
     window.addEventListener("resize", handleResize);
 
-    setHeaderHeight(
-      windowWidth >= 1400
-        ? 78
-        : windowWidth >= 1200
-        ? 83
-        : windowWidth >= 576
-        ? 73
-        : 70
-    );
-
+    setHeaderHeight(windowWidth >= 1400 ? 78 : windowWidth >= 1200 ? 83 : 70);
     setWindowHeight(windowWidth > 1502 ? 838 : windowWidth > 1200 ? 839 : 849);
 
     return () => {
