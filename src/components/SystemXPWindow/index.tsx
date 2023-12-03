@@ -120,6 +120,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
 
   return (
     <Draggable
+      onStart={handleFocusWindows}
       onDrag={(_, ui) => {
         setWindowPosition({ x: ui.x, y: ui.y });
       }}
