@@ -8,6 +8,11 @@ const systemXPWindowData = [
     title: "Gestor de Estoque",
     urlGithub: "https://github.com/vitiilimaa/gestao-de-estoque",
     urlProject: "https://gestao-de-estoque-three.vercel.app"
+  },
+  {
+    title: "GameViewer",
+    urlGithub: "https://github.com/vitiilimaa/gameViewer",
+    urlProject: "https://game-viewer-three.vercel.app"
   }
 ]
 
