@@ -38,7 +38,9 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
   const windowTopRef = useRef<HTMLDivElement>(null);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState<number>(0);
-  const [headerHeight, setHeaderHeight] = useState<number>(87);
+  const [headerHeight, setHeaderHeight] = useState<number>(
+    document.querySelector("header")?.offsetHeight || 0
+  );
   const [windowPosition, setWindowPosition] = useState<WindowPositionProps>({
     x: 0,
     y: 0,
@@ -52,37 +54,45 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
 
     window.addEventListener("resize", handleResize);
 
-    setHeaderHeight(windowWidth >= 1400 ? 78 : windowWidth >= 1200 ? 83 : 70);
-    setWindowHeight(windowWidth > 1502 ? 838 : windowWidth > 1200 ? 839 : 849);
+    setHeaderHeight(
+      (windowWidth >= 1400
+        ? (document.querySelector("header")?.offsetHeight || 0) - 6
+        : document.querySelector("header")?.offsetHeight || 0) || 0
+    );
+    setWindowHeight(
+      windowWidth >= 1400
+        ? window.innerHeight - headerHeight - 6
+        : window.innerHeight - headerHeight
+    );
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [windowWidth]);
+  }, [headerHeight, windowWidth]);
 
   useEffect(() => {
     if (windowMaximized.initialized) {
       handleFocusWindows();
-      const currentWindow = windowRef.current as HTMLElement;
-      const section = currentWindow?.parentElement?.parentElement;
-      const sectionOffsetTop = section?.offsetTop || 0;
+      const referenceTitle =
+        document.getElementById("title-reference")?.offsetTop || 0;
       if (windowMaximized.isMaximized) {
         setMaximizedXPWindow(windowMaximized.isMaximized);
         setWindowPosition({ x: 0, y: 0 });
         window.scrollTo({
-          top: currentWindow.offsetTop - headerHeight,
+          top: referenceTitle - headerHeight,
           behavior: "smooth",
         });
         document.documentElement.style.overflowY = "hidden";
       } else {
         setMaximizedXPWindow(windowMaximized.isMaximized);
         window.scrollTo({
-          top: sectionOffsetTop - headerHeight,
+          top: referenceTitle - headerHeight * 3,
           behavior: "smooth",
         });
         document.documentElement.style.overflowY = "scroll";
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowMaximized]);
 
   function handleFocusWindows() {

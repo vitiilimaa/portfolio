@@ -8,6 +8,7 @@
   z-index: 3;
   user-select: none;
   filter: contrast(0.8);
+  height: 100dvh;
 }
 
 .topBar {

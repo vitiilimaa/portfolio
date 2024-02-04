@@ -8,8 +8,12 @@ const Projects = () => {
       id="projects"
       className={`${styles.desktop} row text-center gap-5 pb-5 gap-xl-0`}
     >
-      <TitleSection addClassToContainer="mt-5 justify-content-center" caption="Projetos" />
+      <TitleSection
+        addClassToContainer="mt-5 justify-content-center"
+        caption="Projetos"
+      />
       <div
+        id="title-reference"
         className="col-12 d-flex flex-wrap justify-content-around align-items-around gap-5 mt-xl-5"
       >
         {systemXPWindowData.map((data, key) => (
