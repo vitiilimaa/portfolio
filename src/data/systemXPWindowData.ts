@@ -13,6 +13,11 @@ const systemXPWindowData = [
     title: "GameViewer",
     urlGithub: "https://github.com/vitiilimaa/gameViewer",
     urlProject: "https://game-viewer-three.vercel.app"
+  },
+  {
+    title: "Luz de Shiva",
+    urlGithub: "https://github.com/vitiilimaa/luz-de-shiva",
+    urlProject: "https://www.luzdeshiva.com.br"
   }
 ]
 
