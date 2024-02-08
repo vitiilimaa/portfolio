@@ -91,6 +91,12 @@ const AboutMe = () => {
                 className={`devicon-postgresql-plain ${styles.iconTechnologies}`}
               />
             </div>
+            <div className="mt-3 mb-3 d-flex gap-2 justify-content-center align-items-center justify-content-xl-start">
+              <i
+                className={`devicon-nextjs-plain ${styles.iconTechnologies}`}
+              />
+            </div>
+
           </div>
         </div>
       </animated.div>
