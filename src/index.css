@@ -1,12 +1,22 @@
+@font-face {
+  font-family: "Jomhuria";
+  src: url("./fonts/Jomhuria-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter-Variable.ttf") format("truetype");
+}
+
 :root {
   --bs-gutter-x: 0 !important;
   --window-color-primary: #245edb;
   --window-color-secondary: #0c8dea;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
-
 }
 
 header {
@@ -35,7 +45,7 @@ p,
 span,
 footer {
   margin: 0;
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: "Inter", "Segoe UI", sans-serif !important;
   cursor: context-menu;
 }
 
