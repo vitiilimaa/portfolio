@@ -17,7 +17,7 @@ const systemXPWindowData = [
   {
     title: "Luz de Shiva",
     urlGithub: "https://github.com/vitiilimaa/luz-de-shiva",
-    urlProject: "https://www.luzdeshiva.com.br"
+    urlProject: "https://www.mauricioscaranto.com.br"
   }
 ]
 
