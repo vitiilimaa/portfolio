@@ -15,8 +15,8 @@ const systemXPWindowData = [
     urlProject: "https://game-viewer-three.vercel.app"
   },
   {
-    title: "Luz de Shiva",
-    urlGithub: "https://github.com/vitiilimaa/luz-de-shiva",
+    title: "Maurício Scaranto - Massoterapeuta",
+    urlGithub: "https://github.com/vitiilimaa/mauricio-scaranto-massoterapeuta",
     urlProject: "https://www.mauricioscaranto.com.br"
   }
 ]

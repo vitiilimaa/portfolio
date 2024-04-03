@@ -95,6 +95,16 @@ const AboutMe = () => {
               <i
                 className={`devicon-nextjs-plain ${styles.iconTechnologies}`}
               />
+              <i
+                className={`devicon-nodejs-plain ${styles.iconTechnologies}`}
+              />
+              <i
+                className={`devicon-mongodb-plain ${styles.iconTechnologies}`}
+              />
+              <i
+                className={`devicon-postman-plain ${styles.iconTechnologies}`}
+              />
+
             </div>
 
           </div>
