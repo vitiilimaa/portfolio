@@ -181,9 +181,11 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         </div>
         <div style={{ background: "#f1eee5" }}>
           <div className={styles.textOptions}>
-            <a href={urlGithub} target="_blank">
-              Repositório
-            </a>
+            {urlGithub && (
+              <a href={urlGithub} target="_blank">
+                Repositório
+              </a>
+            )}
             <a href={urlProject} target="_blank">
               Abrir em nova guia
             </a>
