@@ -21,7 +21,7 @@ const Projects = () => {
             key={key}
             id={key}
             title={data.title}
-            urlGithub={data.urlGithub}
+            urlGithub={data.urlGithub || ''}
             urlProject={data.urlProject}
           />
         ))}

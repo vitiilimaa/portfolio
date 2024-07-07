@@ -123,7 +123,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
 
   const animationProps = useSpring({
     width: windowMaximized.isMaximized ? windowWidth : 720,
-    height: windowMaximized.isMaximized ? windowHeight : 544,
+    height: windowMaximized.isMaximized ? windowHeight : 780,
     top: 0,
     left: 0,
   });
