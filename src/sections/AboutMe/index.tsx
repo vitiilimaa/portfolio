@@ -16,6 +16,13 @@ const AboutMe = () => {
   return (
     <section
       id="aboutMe"
+      style={{
+        borderStyle: "solid",
+        borderTopWidth: 2,
+        borderTopColor: "#fff000",
+        borderBottomWidth: 2,
+        borderBottomColor: "#fff",
+      }}
       className="row bg-black px-3 pb-5 text-center py-xl-6 py-xxl-6-5"
     >
       <animated.div
@@ -104,9 +111,7 @@ const AboutMe = () => {
               <i
                 className={`devicon-postman-plain ${styles.iconTechnologies}`}
               />
-
             </div>
-
           </div>
         </div>
       </animated.div>

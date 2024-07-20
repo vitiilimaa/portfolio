@@ -72,6 +72,11 @@ const Contact = () => {
   return (
     <section
       id="contact"
+      style={{
+        borderStyle: "solid",
+        borderTopWidth: 2,
+        borderTopColor: "#fff000",
+      }}
       className="row align-items-center justify-content-center pb-5 bg-black px-5 align-items-xl-start ps-xl-6 pb-xxl-5"
     >
       <animated.div ref={ref} style={springs} className="col-12 col-xl-4">
