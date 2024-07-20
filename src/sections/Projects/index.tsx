@@ -14,14 +14,16 @@ const Projects = () => {
       />
       <div
         id="title-reference"
-        className="col-12 d-flex flex-wrap justify-content-around align-items-around gap-5 mt-xl-5"
+        className="col-12 d-flex flex-wrap justify-content-center align-items-center gap-5 mt-xl-5"
       >
         {systemXPWindowData.map((data, key) => (
           <SystemXPWindow
             key={key}
             id={key}
             title={data.title}
-            urlGithub={data.urlGithub || ''}
+            logo={data.logo}
+            containerStyle={data.containerStyle}
+            urlGithub={data.urlGithub || ""}
             urlProject={data.urlProject}
           />
         ))}

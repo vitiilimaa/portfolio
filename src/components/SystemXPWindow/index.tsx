@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, CSSProperties } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import Draggable from "react-draggable";
 import MessageError from "./MessageError";
@@ -9,6 +9,9 @@ import useHeaderBlocker from "../../hooks/useHeaderBlocker";
 interface SystemXPWindowProp {
   id: number;
   title: string;
+  logo: string;
+  containerStyle?: CSSProperties;
+  contentStyle?: CSSProperties;
   urlGithub: string;
   urlProject: string;
 }
@@ -26,6 +29,8 @@ interface WindowPositionProps {
 const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
   id,
   title,
+  logo,
+  containerStyle,
   urlGithub,
   urlProject,
 }) => {
@@ -122,8 +127,8 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
   }
 
   const animationProps = useSpring({
-    width: windowMaximized.isMaximized ? windowWidth : 720,
-    height: windowMaximized.isMaximized ? windowHeight : 780,
+    width: windowMaximized.isMaximized ? windowWidth : 600,
+    height: windowMaximized.isMaximized ? windowHeight : 600,
     top: 0,
     left: 0,
   });
@@ -192,8 +197,8 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
           </div>
         </div>
         <hr style={{ margin: 0 }} />
-        <div className={styles.windowBody}>
-          <iframe className={styles.iframe} src={urlProject} title={title} />
+        <div className={styles.windowBody} style={containerStyle}>
+          <img className={`${styles.imgBody}`} src={logo} />
         </div>
         {windowMaximized.isMaximized && (
           <MessageError
