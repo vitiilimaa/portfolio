@@ -50,7 +50,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
     x: 0,
     y: 0,
   });
-  const { setMaximizedXPWindow } = useHeaderBlocker();
+  const { showError, setMaximizedXPWindow } = useHeaderBlocker();
 
   useEffect(() => {
     const handleResize = () => {
@@ -197,15 +197,15 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         <hr style={{ margin: 0 }} />
         <div className={styles.windowBody} style={containerStyle}>
           <img className={`${styles.imgBody}`} src={logo} />
+          {showError && (
+            <MessageError
+              title={title}
+              message={
+                "Para conseguir navegar entre as sessões, minimize a janela do projeto."
+              }
+            />
+          )}
         </div>
-        {windowMaximized.isMaximized && (
-          <MessageError
-            title={title}
-            message={
-              "Para conseguir navegar entre as sessões, minimize a janela do projeto."
-            }
-          />
-        )}
       </animated.div>
     </Draggable>
   );

@@ -122,57 +122,58 @@
   top: 0;
   z-index: -1;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
 
 .imgBody {
-  margin-top: 50px;
   width: 350px;
   background-size: cover;
 }
 
 .error {
   position: absolute;
-  width: 530px;
-  height: 142px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
   border: 3px solid var(--window-color-primary);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background-color: #e8e8d8;
   opacity: 0;
-  left: 36%;
-  top: 36%;
   z-index: 1;
 }
 
 .message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   width: 100%;
-  margin-top: 25px;
+  margin-top: 1rem;
   font-family: Arial, sans-serif;
   font-size: 14px;
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .message img {
   float: left;
   margin-top: -15px;
-  margin-left: 5px;
 }
 
 .ok {
-  position: absolute;
   width: 100px;
   height: 27px;
   background-color: #e8e8d8;
   border: 1px solid #2b2b2b;
   box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.7);
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
   outline: none;
   cursor: context-menu !important;
+margin-bottom: 0.6rem;
 }
 
 .ok:focus > span {
@@ -191,5 +192,13 @@
     margin-top: 50px;
     width: 450px;
     background-size: cover;
+  }
+
+  .error {
+    width: 530px;
+  }
+
+  .ok {
+    bottom: 15px;
   }
 }
