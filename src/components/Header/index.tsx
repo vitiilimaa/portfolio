@@ -27,7 +27,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowWidth]);
 
   const handleLinkAnimation = (e: React.MouseEvent) => {
@@ -139,7 +139,12 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto text-center">
               <li className="nav-item border border-start-0 border-end-0 border-top-0">
-                <a className="nav-link active" aria-current="page" href="#">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#"
+                  onClick={(e) => handleLinkAnimation(e)}
+                >
                   Início<span className={styles.point}>.</span>
                 </a>
               </li>
