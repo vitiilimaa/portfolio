@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, CSSProperties } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import Draggable from "react-draggable";
 import MessageError from "./MessageError";
-import iconInternetExplorer from "../../img/icons/iconInternetExplorer.svg";
+import iconInternetExplorer from "../../assets/img/icons/iconInternetExplorer.svg";
 import useHeaderBlocker from "../../hooks/useHeaderBlocker";
 
 interface SystemXPWindowProp {

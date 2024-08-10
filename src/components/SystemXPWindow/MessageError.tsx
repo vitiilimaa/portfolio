@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
-import iconErrorWinXP from "../../img/icons/iconErrorWinXP.png";
+import iconErrorWinXP from "../../assets/img/icons/iconErrorWinXP.png";
 import useHeaderBlocker from "../../hooks/useHeaderBlocker";
 import { animated, useSpring } from "@react-spring/web";
 

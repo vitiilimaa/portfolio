@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import MyPictureAboutMe from "../../img/myPhotos/my-picture-about-me.png";
+import MyPictureAboutMe from "../../assets/img/myPhotos/my-picture-about-me.png";
 import { TitleSection } from "../../components";
 import { useInView, animated } from "@react-spring/web";
 

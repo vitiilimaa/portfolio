@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
 import useHeaderBlocker from "../../hooks/useHeaderBlocker";
-import errorWinXP from "../../audio/errorWinXP.mp3";
+import errorWinXP from "../../assets/audio/errorWinXP.mp3";
 import { saveAs } from "file-saver";
 
 const Header = () => {

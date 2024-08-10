@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import { Button, SocialMedia } from "../../components";
-import MyPicture from "../../img/myPhotos/my-picture.png";
+import MyPicture from "../../assets/img/myPhotos/my-picture.png";
 import { useInView, animated } from "@react-spring/web";
 
 const Home = () => {

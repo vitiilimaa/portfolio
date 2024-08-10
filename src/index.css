@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");
-
-@font-face {
-  font-family: "Jomhuria";
-  src: url("./fonts/Jomhuria-Regular.ttf") format("truetype");
-}
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&display=swap');
 
 :root {
   --bs-gutter-x: 0 !important;

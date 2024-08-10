@@ -1,5 +1,5 @@
-import mauricioScaranto from "../img/projects/mauricioScaranto.webp";
-import bloodhuntsGaming from "../img/projects/bloodhuntsGaming.webp";
+import mauricioScaranto from "../assets/img/projects/mauricioScaranto.webp";
+import bloodhuntsGaming from "../assets/img/projects/bloodhuntsGaming.webp";
 
 const systemXPWindowData = [
   {

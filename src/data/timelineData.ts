@@ -26,6 +26,13 @@ const timelineData = [
     description:
       "Responsável pelo desenvolvimento, manutenção e atualização de telas, assegurando a navegabilidade eficiente e aprimorando a experiência do usuário.",
     date: "12/2023 - Atual",
+  },
+  {
+    title: "Desenvolvedor Front-End Trainee",
+    subtitle: "Techlise Soluções em Tecnologia",
+    description:
+      "Responsável pelo desenvolvimento, manutenção e atualização de telas, assegurando a navegabilidade eficiente e aprimorando a experiência do usuário.",
+    date: "08/2024 - Atual",
     isProgramming: true,
   }
 ]
