@@ -112,7 +112,7 @@ const SystemXPWindow: React.FC<SystemXPWindowProp> = ({
         iteratedElement?.id === currentWindow.id
       ) {
         if (zIndexValue === 1) {
-          currentWindow.style.zIndex = "2" || null;
+          currentWindow.style.zIndex = "2";
           currentWindow.style.filter = "contrast(1)";
           currentWindowTop.style.filter = "contrast(1)";
         }
